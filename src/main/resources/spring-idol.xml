@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="poeticDuke" class="com.nastya.spring.springidol.PoeticJuggler">
+        <constructor-arg value="15"/>
+        <constructor-arg ref="sonnet29"/>
+    </bean>
+
+    <bean id="sonnet29" class="com.nastya.spring.springidol.Sonnet29"/>
+
+    <bean id="theStage" class="com.nastya.spring.springidol.Stage" factory-method="getInstance"/>
+    <bean id="ticket" class="com.nastya.spring.springidol.Ticket" scope="prototype"/>
+    <bean id="auditorium" class="com.nastya.spring.springidol.Auditorium" init-method="turnOnLights"
+          destroy-method="turnOffLights"/>
+    <bean id="kenny" class="com.nastya.spring.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="age" value="37"/>
+        <property name="instrumental" ref="saxophone"/>
+    </bean>
+    <bean id="saxophone" class="com.nastya.spring.springidol.Saxophone"/>
+    <bean id="piano" class="com.nastya.spring.springidol.Piano"/>
+</beans>
